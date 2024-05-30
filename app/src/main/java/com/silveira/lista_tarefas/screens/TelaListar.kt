@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.silveira.lista_tarefas.R
 
@@ -42,4 +43,12 @@ fun ListarTarefas(navController: NavController){
             }
         }
     ) {}
+}
+
+fun Text(
+    text: String,
+    fontSize: Dp,
+    fontWeight: FontWeight,
+    color: Long) {
+
 }
