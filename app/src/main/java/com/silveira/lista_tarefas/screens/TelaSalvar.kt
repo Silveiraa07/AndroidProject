@@ -1,6 +1,7 @@
 package com.silveira.lista_tarefas.screens
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -8,8 +9,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.silveira.lista_tarefas.model.Tarefa
+import com.silveira.lista_tarefas.repository.TarefaRepository
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,7 +34,9 @@ fun SalvarTarefas(navController: NavController){
 
 @Composable
 fun Content(){
+    val localContext = LocalContext.current
     val textState = remember { mutableStateOf("") }
+
         Column {
             TextField(
                 value = textState.value,
@@ -39,16 +45,16 @@ fun Content(){
                 label = { Text("Digite a tarefa aqui...") },
                 maxLines = 1
             )
-            TextField(
-                value = textState.value,
-                onValueChange = { textState.value = it},
-                modifier = Modifier.fillMaxWidth().height(150.dp).padding(10.dp,20.dp,20.dp,0.dp),
-                label = { Text("Faça uma descrição...") },
-                maxLines = 5
-            )
+
             Botao(
                 onClick = {
-
+                    val tarefa = Tarefa(
+                        id = null,
+                        tarefa = String
+                    )
+                    val repository = TarefaRepository(localContext)
+                    val id = repository.insert(tarefa)
+                    Log.i("APPDEBUG",id.toString())
                 },
                 modifier = Modifier.fillMaxWidth().padding(20.dp).height(80.dp),
                 texto = "Salvar",

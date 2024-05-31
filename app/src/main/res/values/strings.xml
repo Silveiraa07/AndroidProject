@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Lista_Tarefas</string>
     <string name="add_button"/>
+    <string name="description_icon_trash"/>
 </resources>
