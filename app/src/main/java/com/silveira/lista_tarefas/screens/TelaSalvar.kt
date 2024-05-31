@@ -50,7 +50,7 @@ fun Content(){
                 onClick = {
                     val tarefa = Tarefa(
                         id = null,
-                        tarefa = String
+                        tarefa = String()
                     )
                     val repository = TarefaRepository(localContext)
                     val id = repository.insert(tarefa)
